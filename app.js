@@ -1,5 +1,7 @@
-import express, { urlencoded } from 'express';
-import cors from 'cors';
+import express, { urlencoded } from "express";
+import cors from "cors";
+import path from "path";
+import uploadRouter from "./router/UploadRouter.js";
 import MainRouter from './router/MainRouter.js';
 import SearchRouter from './router/SearchRouter.js';
 import ProductRouter from './router/ProductRouter.js';
@@ -9,6 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cors());
+app.use("/uploads", express.static(path.join("Uploads")));
+app.use("/upload", uploadRouter);
 
 app.use('/product', ProductRouter);
 app.use('/search', SearchRouter);
