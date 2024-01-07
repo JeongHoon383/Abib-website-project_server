@@ -1,7 +1,7 @@
 import { db } from '../db/Database.js';
 
 export async function getProduct() {
-  const sql = 'select * from product';
+  const sql = "select * from product where SUBSTRING_INDEX(category, '/', 1) = '스킨케어'";
   return db.execute(sql).then((result) => result[0]);
 }
 
