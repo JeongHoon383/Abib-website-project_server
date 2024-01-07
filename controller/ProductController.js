@@ -1,6 +1,7 @@
 import * as ProductRep from '../repository/ProductRepository.js';
 
 export async function getProduct(req, res) {
+  // const category = req.params.category;
   const result = await ProductRep.getProduct();
   res.json(result);
 }
