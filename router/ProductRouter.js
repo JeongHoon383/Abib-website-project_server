@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded());
 
-router.get('/list', controller.getProduct);
+router.get('/list/:category', controller.getProduct);
 router.get('/detail/:pid', controller.getProductDetail);
 
 export default router;
