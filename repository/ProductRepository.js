@@ -1,8 +1,8 @@
 import { db } from '../db/Database.js';
 
 export async function getProduct(category) {
-  const sql = "select * from product where SUBSTRING_INDEX(SUBSTRING_INDEX(category, '/', 1), '/', -1) = ?";
-  return db.execute(sql, [category]).then((result) => result[0]);
+  const sql = 'select * from product where category like ?';
+  return db.execute(sql, [`%${category}%`]).then((result) => result[0]);
 }
 
 export async function getProductDetail(pid) {
