@@ -19,6 +19,7 @@ app.use("/product", ProductRouter);
 app.use("/search", SearchRouter);
 app.use("/certification", MemberRouter);
 
+app.use("/", MainRouter);
 app.listen(9090, () => {
   console.log(`http://localhost:9090 아비브 서버 실행중`);
 });
