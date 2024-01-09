@@ -1,18 +1,23 @@
-// import coolsms from 'coolsms-node-sdk';
+import coolsms from "coolsms-node-sdk";
 
-// export async function verificationCode(req, res) {
+export async function getCertificationCode(req, res) {
+  const { phoneValue } = req.body;
+  const getCertificationCode = Math.floor(Math.random() * 1000000);
+  const mysms = coolsms.default;
+  const messageService = new mysms(
+    "NCSN3GO1YUSM6DIT",
+    "HNDAKYW9BZMYKYVDCAKMPHMIR3B9MQPR"
+  );
 
-// }
+  const result = await messageService.sendOne({
+    to: `${phoneValue}`,
+    from: "01085486516",
+    text: `아비브 인증번호는 [${getCertificationCode}]입니다.`,
+  });
 
-// export async function printTokenResult(phone, token){
-
-//   const mysms = coolsms.default;
-//     const messageService = new mysms("(API KEY 값)","(API 		Secret 값)");
-//     const result = await messageService.sendOne({
-//         to: `${phone}`,
-//          from : '(수신 핸드폰 번호)',
-//          text : `안녕하세요 요청하신 인증번호는 [${token}]입니다.`
-//     })
-
-//     console.log(result);
-// }
+  if (result.statusCode === "2000") {
+    res.json(getCertificationCode);
+  } else {
+    res.json("faillure");
+  }
+}
