@@ -19,7 +19,7 @@ app.use('/upload', uploadRouter);
 app.use('/product', ProductRouter);
 app.use('/search', SearchRouter);
 app.use('/certification', MemberRouter);
-app.use('/save-review', ReviewRouter);
+app.use('/review', ReviewRouter);
 
 app.use('/', MainRouter);
 app.listen(9090, () => {
