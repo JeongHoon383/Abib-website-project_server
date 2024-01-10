@@ -16,6 +16,7 @@ const save = multer({
   }),
 });
 
-router.post('/', save.single('rcover'), controller.saveReview);
+router.post('/save-review', save.single('rcover'), controller.saveReview);
+router.get('/:pid', controller.getReview);
 
 export default router;
