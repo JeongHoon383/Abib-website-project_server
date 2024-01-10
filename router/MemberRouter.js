@@ -1,8 +1,10 @@
 import express from "express";
-import * as MemberReq from "../controller/MemberController.js";
+import * as controller from "../controller/MemberController.js";
 
 const router = express.Router();
 
-router.post("/", MemberReq.getCertificationCode);
+router.get("/isIdAvailable/:idValue", controller.getIsIdAvailable);
+router.post("/certification", controller.getCertificationCode);
+router.post("/insertMember", controller.insertMember);
 
 export default router;
