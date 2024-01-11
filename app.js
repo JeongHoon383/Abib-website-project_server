@@ -18,7 +18,7 @@ app.use('/upload', uploadRouter);
 
 app.use('/product', ProductRouter);
 app.use('/search', SearchRouter);
-app.use('/certification', MemberRouter);
+app.use('/member', MemberRouter);
 app.use('/review', ReviewRouter);
 
 app.use('/', MainRouter);
