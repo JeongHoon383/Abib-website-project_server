@@ -10,3 +10,9 @@ export async function insertMember(formData) {
     "insert into member (mid, password, name, phone, email, joinDate, birthdate, postalcode, address1, address2, gradeName) values (?, ?, ?, ?, ?, now(), ?, ?, ?, ?, 'White')";
   return db.execute(sql, formData).then((result) => "success");
 }
+
+export async function login(id) {
+  const sql =
+    "select count(password) as count, any_value(password) as password from member where mid = ?";
+  return db.execute(sql, [id]).then((rows) => rows[0][0]);
+}

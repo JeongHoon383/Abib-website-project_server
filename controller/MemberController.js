@@ -58,3 +58,22 @@ export async function insertMember(req, res) {
   const result = await repository.insertMember(formData);
   res.json(result);
 }
+
+export async function login(req, res) {
+  const { id, password } = req.body;
+  const result = await repository.login(id);
+  const loginResult = { isLogin: false, isIdExist: false };
+
+  if (result.count === 1) {
+    loginResult.isIdExist = true;
+    const secretkey = "94sn0Gvc%WcM";
+
+    if (await bcrypt.compare(password, result.password)) {
+      loginResult.isLogin = true;
+      const token = jwt.sign({ id: id }, secretkey);
+      loginResult.token = token;
+    }
+  }
+
+  res.json(loginResult);
+}
