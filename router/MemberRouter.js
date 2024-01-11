@@ -1,8 +1,11 @@
 import express from 'express';
-import * as MemberRep from '../controller/MemberController.js';
+import * as controller from '../controller/MemberController.js';
 
 const router = express.Router();
 
-router.post('/', MemberRep.getCertificationCode);
+router.get('/isIdAvailable/:idValue', controller.getIsIdAvailable);
+router.post('/certification', controller.getCertificationCode);
+router.post('/insertMember', controller.insertMember);
+router.post('/login', controller.login);
 
 export default router;
