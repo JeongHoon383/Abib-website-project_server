@@ -6,6 +6,6 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded());
 
-router.get("/cart/:pid", controller.getCartProduct);
+router.post("/cartAdd", controller.cartAdd);
 
 export default router;

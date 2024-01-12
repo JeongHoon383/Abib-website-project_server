@@ -1,7 +1,7 @@
 import * as CartRep from "../repository/CartRepository.js";
 
-export async function getCartProduct(req, res) {
-  const pid = req.params.pid;
-  const result = await CartRep.getCartProduct(pid);
-  res.json(result);
+export async function cartAdd(req, res) {
+  const result = await CartRep.cartAdd();
+  console.log(req.body);
+  /* res.json(result); */
 }
