@@ -1,8 +1,10 @@
 import express from "express";
-import { getProducts } from "../controller/MainController.js";
+import { getProducts, insertQna } from "../controller/MainController.js";
 
 const router = express.Router();
 
 router.get("/", getProducts);
+
+router.post("/", insertQna);
 
 export default router;
