@@ -20,6 +20,8 @@ app.use("/upload", uploadRouter);
 app.use("/product", ProductRouter);
 app.use("/search", SearchRouter);
 app.use("/member", MemberRouter);
+app.use("/review", ReviewRouter);
+app.use("/order", OrderRouter);
 
 app.use("/", MainRouter);
 app.listen(9090, () => {
