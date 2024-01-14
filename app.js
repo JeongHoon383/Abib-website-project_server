@@ -6,6 +6,7 @@ import MainRouter from "./router/MainRouter.js";
 import SearchRouter from "./router/SearchRouter.js";
 import ProductRouter from "./router/ProductRouter.js";
 import MemberRouter from "./router/MemberRouter.js";
+import OrderRouter from "./router/OrderRouter.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/upload", uploadRouter);
 app.use("/product", ProductRouter);
 app.use("/search", SearchRouter);
 app.use("/member", MemberRouter);
+app.use("/order", OrderRouter);
 
 app.use("/", MainRouter);
 app.listen(9090, () => {
