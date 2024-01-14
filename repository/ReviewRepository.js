@@ -1,0 +1,11 @@
+import { db } from '../db/Database.js';
+
+export async function saveReview(pid, mid, point, content, rcover) {
+  const sql = 'insert into review (pid, mid, point, content, rdate, rcover) values(?, ?, ?, ?, DATE(sysdate()), ?)';
+  return db.execute(sql, [pid, mid, point, content, rcover || null]).then((result) => 'success');
+}
+
+export async function getReview(pid) {
+  const sql = 'select * from review where pid = ?';
+  return db.execute(sql, [pid]).then((result) => result[0]);
+}
