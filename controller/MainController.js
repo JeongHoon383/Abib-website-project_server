@@ -7,7 +7,7 @@ export async function getProducts(req, res) {
 export async function insertQna(req, res) {
   const { qTitle, qContent, mid } = req.body;
   console.log(qTitle, qContent, mid);
-  let result = await MainRepository.insertQna(qTitle, qContent, mid);
+  let result = await MainRepository.insertQna(mid, qTitle, qContent);
   if (result == "ok") {
     res.json({ ok: true });
   }
