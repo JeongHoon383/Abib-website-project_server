@@ -2,8 +2,9 @@ import * as repository from "../repository/OrderRepository.js";
 
 export async function order(req, res) {
   const orderData = req.body;
+  console.log(orderData);
   const result = await repository.order(orderData);
-  console.log(result);
+  res.json(result);
 }
 
 export async function getOrdererInfo(req, res) {
