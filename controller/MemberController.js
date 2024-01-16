@@ -25,7 +25,7 @@ export async function getCertificationCode(req, res) {
   });
 
   if (result.statusCode === "2000") {
-    res.json(certificationCode);
+    res.json(certificationCode.toString());
   } else {
     res.json("faillure");
   }
