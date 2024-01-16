@@ -39,7 +39,10 @@ export async function order(orderData) {
   try {
     const orid = Math.floor(1000000000 + Math.random() * 9000000000).toString();
     const orderTotalPrice = cart.reduce(
-      (total, item) => total + item.priceSales * item.quantity,
+      (total, item) =>
+        total +
+        (item.priceSales ? item.priceSales : item.originalPrice) *
+          item.quantity,
       0
     );
     const deliveryFee = orderTotalPrice >= 50000 ? 0 : 2500;
