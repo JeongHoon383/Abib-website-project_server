@@ -12,3 +12,10 @@ export async function insertQna(req, res) {
     res.json({ ok: true });
   }
 }
+
+export async function getOrderList(req, res) {
+  const { id } = req.params;
+  let result = await MainRepository.getOrderList(id);
+
+  res.json(result);
+}
