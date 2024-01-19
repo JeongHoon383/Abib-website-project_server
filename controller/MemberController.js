@@ -25,7 +25,7 @@ export async function getCertificationCode(req, res) {
   });
 
   if (result.statusCode === "2000") {
-    res.json(certificationCode);
+    res.json(certificationCode.toString());
   } else {
     res.json("faillure");
   }
@@ -62,15 +62,14 @@ export async function insertMember(req, res) {
 export async function login(req, res) {
   const { id, password } = req.body;
   const result = await repository.login(id);
-  const loginResult = { isLogin: false, isIdExist: false };
+  const loginResult = { isLogin: false, isIdExist: false, token: "" };
 
   if (result.count === 1) {
     loginResult.isIdExist = true;
-    const secretkey = "94sn0Gvc%WcM";
 
     if (await bcrypt.compare(password, result.password)) {
       loginResult.isLogin = true;
-      const token = jwt.sign({ id: id }, secretkey);
+      const token = jwt.sign({ id: id }, "94sn0Gvc");
       loginResult.token = token;
     }
   }
