@@ -24,6 +24,6 @@ app.use("/review", ReviewRouter);
 app.use("/order", OrderRouter);
 
 app.use("/", MainRouter);
-app.listen(9090, () => {
-  console.log(`http://192.168.50.16:9090 아비브 서버 실행중`);
+app.listen(9091, () => {
+  console.log(`http://192.168.50.16:9091 아비브 서버 실행중`);
 });
